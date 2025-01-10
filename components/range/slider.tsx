@@ -1,3 +1,5 @@
+import React from "react";
+
 interface SliderProps {
     min: number;
     max: number;
@@ -6,6 +8,8 @@ interface SliderProps {
 }
 
 const Slider: React.FC<SliderProps> = ({ min, max, handle1, handle2 }) => {
+    if (min === max) return null;
+
     return (
         <div className="relative w-full h-2 bg-gray-300 rounded-full">
             <div
@@ -19,4 +23,4 @@ const Slider: React.FC<SliderProps> = ({ min, max, handle1, handle2 }) => {
     );
 };
 
-export default Slider
+export default Slider;

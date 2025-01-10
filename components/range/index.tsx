@@ -41,10 +41,10 @@ const Range: React.FC<RangeProps> = ({
         value = clamp(value);
         if (isFixed) value = getClosestFixedValue(value);
 
-        if (index === 0 && value < handle2) {
+        if (index === 0 && value <= handle2) {
             setHandle1(value);
             if (minError && value < handle2) setMinError(null);
-        } else if (index === 1 && value > handle1) {
+        } else if (index === 1 && value >= handle1) {
             setHandle2(value);
             if (maxError && value > handle1) setMaxError(null);
         }
@@ -76,7 +76,7 @@ const Range: React.FC<RangeProps> = ({
                     onChange={(e) => {
                         const value = clamp(Number(e.target.value));
                         setMinError(null);
-                        if (value < handle2) setHandle1(value);
+                        if (value <= handle2) setHandle1(value);
                     }}
                     onBlur={() => {
                         if (handle1 >= handle2) {
@@ -90,6 +90,7 @@ const Range: React.FC<RangeProps> = ({
                     isFixed={isFixed}
                     aria-describedby="min-error"
                 />
+
                 <Price
                     label="Max Value"
                     value={handle2}

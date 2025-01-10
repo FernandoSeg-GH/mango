@@ -24,6 +24,7 @@ describe("Range Component", () => {
         expect(minInput).toHaveValue(100);
     });
 
+
     test("renders fixed values as read-only when isFixed is true", () => {
         setup({
             min: 1.99,
