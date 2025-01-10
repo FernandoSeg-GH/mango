@@ -72,7 +72,8 @@ const Handle: React.FC<HandleProps> = ({
             className={`absolute w-6 h-6 bg-white border-2 border-black rounded-full shadow-md transform -translate-x-1/2 -translate-y-1/2 cursor-pointer ${hoveredHandle === index ? "scale-110" : "scale-100"} transition-transform ease-in duration-200`}
             style={{
                 left: `${((value - min) / (max - min)) * 100}%`,
-                top: "23.5%",
+                top: "2%",
+                transform: "translate(-50%, -50%)",
             }}
             onMouseEnter={() => setHoveredHandle(index)}
             onMouseLeave={() => setHoveredHandle(null)}

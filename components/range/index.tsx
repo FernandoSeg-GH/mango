@@ -51,24 +51,26 @@ const Range: React.FC<RangeProps> = ({
     };
 
     return (
-        <div className="relative w-full max-w-[80%] mx-auto md:max-w-md py-10" role="region" aria-labelledby="range-slider-title">
+        <div className="relative w-full sm:max-w-[80%] mx-auto md:max-w-md" role="region" aria-labelledby="range-slider-title">
             <h2 id="range-slider-title" className="sr-only">Range Selector</h2>
-            <Slider min={min} max={max} handle1={handle1} handle2={handle2} />
 
-            {[handle1, handle2].map((handle, index) => (
-                <Handle
-                    key={index}
-                    value={handle}
-                    min={min}
-                    max={max}
-                    index={index}
-                    onDrag={handleDrag}
-                    hoveredHandle={hoveredHandle}
-                    setHoveredHandle={setHoveredHandle}
-                    aria-label={`Handle ${index + 1}, value: ${handle}`}
-                />
-            ))}
+            <div className="mb-6">
+                <Slider min={min} max={max} handle1={handle1} handle2={handle2} />
 
+                {[handle1, handle2].map((handle, index) => (
+                    <Handle
+                        key={index}
+                        value={handle}
+                        min={min}
+                        max={max}
+                        index={index}
+                        onDrag={handleDrag}
+                        hoveredHandle={hoveredHandle}
+                        setHoveredHandle={setHoveredHandle}
+                        aria-label={`Handle ${index + 1}, value: ${handle}`}
+                    />
+                ))}
+            </div>
             <div className="flex flex-col 2xs:flex-row justify-between mt-4 gap-4">
                 <Price
                     label="Min Value"
