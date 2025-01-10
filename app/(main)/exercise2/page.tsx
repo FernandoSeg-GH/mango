@@ -29,6 +29,7 @@ export default async function Exercise2() {
     } catch (error) {
         return (
             <ErrorMessage
+                title="Exercise 2: Fixed Range"
                 message={(error as Error).message || "An unexpected error occurred"}
             />
         );

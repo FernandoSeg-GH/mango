@@ -13,7 +13,6 @@ export type RangeProps = {
     fixedValues?: number[];
 };
 
-
 const Range: React.FC<RangeProps> = ({
     min,
     max,
@@ -52,7 +51,8 @@ const Range: React.FC<RangeProps> = ({
     };
 
     return (
-        <div className="relative w-full max-w-lg mx-auto py-10">
+        <div className="relative w-full max-w-lg mx-auto py-10" role="region" aria-labelledby="range-slider-title">
+            <h2 id="range-slider-title" className="sr-only">Range Selector</h2>
             <Slider min={min} max={max} handle1={handle1} handle2={handle2} />
 
             {[handle1, handle2].map((handle, index) => (
@@ -65,6 +65,7 @@ const Range: React.FC<RangeProps> = ({
                     onDrag={handleDrag}
                     hoveredHandle={hoveredHandle}
                     setHoveredHandle={setHoveredHandle}
+                    aria-label={`Handle ${index + 1}, value: ${handle}`}
                 />
             ))}
 
@@ -87,8 +88,8 @@ const Range: React.FC<RangeProps> = ({
                     }}
                     error={minError}
                     isFixed={isFixed}
+                    aria-describedby="min-error"
                 />
-
                 <Price
                     label="Max Value"
                     value={handle2}
@@ -107,9 +108,11 @@ const Range: React.FC<RangeProps> = ({
                     }}
                     error={maxError}
                     isFixed={isFixed}
+                    aria-describedby="max-error"
                 />
             </div>
         </div>
+
     );
 };
 

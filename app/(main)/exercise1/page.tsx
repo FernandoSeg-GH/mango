@@ -17,6 +17,7 @@ export default async function Exercise1() {
     } catch (error) {
         return (
             <ErrorMessage
+                title="Exercise 1: Range Component"
                 message={(error as Error).message || "An unexpected error occurred"}
             />
         );
