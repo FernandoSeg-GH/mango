@@ -51,7 +51,7 @@ const Range: React.FC<RangeProps> = ({
     };
 
     return (
-        <div className="relative w-full max-w-lg mx-auto py-10" role="region" aria-labelledby="range-slider-title">
+        <div className="relative w-full max-w-[80%] mx-auto md:max-w-md py-10" role="region" aria-labelledby="range-slider-title">
             <h2 id="range-slider-title" className="sr-only">Range Selector</h2>
             <Slider min={min} max={max} handle1={handle1} handle2={handle2} />
 
