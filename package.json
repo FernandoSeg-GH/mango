@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=8080 next dev --turbopack --experimental-https",
+    "dev": "PORT=8080 next dev --turbopack",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "build": "next build",
