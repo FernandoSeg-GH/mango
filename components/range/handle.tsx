@@ -40,6 +40,27 @@ const Handle: React.FC<HandleProps> = ({
         document.addEventListener("mouseup", onMouseUp);
     };
 
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        const slider = e.currentTarget.parentElement!;
+        const rect = slider.getBoundingClientRect();
+
+        const onTouchMove = (event: TouchEvent) => {
+            const touch = event.touches[0];
+            const newValue =
+                min +
+                Math.round(((touch.clientX - rect.left) / rect.width) * (max - min));
+            onDrag(clamp(newValue, min, max), index);
+        };
+
+        const onTouchEnd = () => {
+            document.removeEventListener("touchmove", onTouchMove);
+            document.removeEventListener("touchend", onTouchEnd);
+        };
+
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
+    };
+
     return (
         <div
             role="slider"
@@ -61,6 +82,7 @@ const Handle: React.FC<HandleProps> = ({
                 if (e.key === "ArrowLeft" || e.key === "ArrowDown") onDrag(clamp(value - step, min, max), index);
             }}
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
         />
     );
 };
